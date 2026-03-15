@@ -212,13 +212,20 @@
         </div>
             
              <div style="margin-bottom:10px;">
-             <label>Servicio de Interés</label><br>
-             <select name="servicio" style="width:100%;padding:8px;">
-             <option>Comunidades</option>
-             <option>Oficinas</option>
-             <option>Casas Particulares</option>
-             <option>Parking</option>
+            <label>Servicio de Interés</label><br>
+
+            <select name="servicio" required 
+            style="width:100%;padding:10px;border:1px solid #ccc;background:white;color:black;border-radius:6px;">
+
+            <option value="" disabled selected>Seleccione un servicio</option>
+            <option value="Comunidades">Comunidades</option>
+            <option value="Oficinas">Oficinas</option>
+            <option value="Casas Particulares">Casas Particulares</option>
+            <option value="Parking">Parking</option>
+
             </select>
+
+        </div>
         </div>
             
             <div style="margin-bottom:10px;">
