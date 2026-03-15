@@ -207,7 +207,7 @@ Pide tu presupuesto sin compromiso. Estamos listos para ayudarte.
 Solicita Información
 </h3>
 
-<form action="https://formspree.io/f/xbdzalqa" method="POST" class="space-y-4">
+<form id="formularioContacto" action="https://formspree.io/f/xbdzalqa" method="POST" class="space-y-4">
 
 <div>
 <label class="block text-sm font-semibold mb-1">Nombre</label>
@@ -243,16 +243,19 @@ class="w-full border rounded-lg px-4 py-2"></textarea>
 
 <div class="text-center">
 
-<button type="submit"
-class="bg-cyan-400 hover:bg-cyan-500 text-blue-900 font-bold py-3 px-8 rounded-lg shadow-lg transition">
+<button id="btnEnviar" type="submit"
+class="bg-cyan-400 hover:bg-cyan-500 text-blue-900 font-bold py-3 px-8 rounded-lg shadow-lg transition duration-300">
 
-<i class="fas fa-paper-plane mr-2"></i>
-Enviar Solicitud
+<span id="textoBtn">
+<i class="fas fa-paper-plane mr-2"></i> Enviar Solicitud
+</span>
 
 </button>
 
 </div>
-
+<div id="mensajeExito" class="hidden mt-4 text-green-600 font-bold text-center">
+✅ Solicitud enviada correctamente
+</div>
 </form>
 
 </div>
@@ -322,5 +325,37 @@ Enviar Solicitud
             }
         });
     </script>
+    <script>
+
+const form = document.getElementById("formularioContacto");
+const mensaje = document.getElementById("mensajeExito");
+const btn = document.getElementById("btnEnviar");
+const textoBtn = document.getElementById("textoBtn");
+
+form.addEventListener("submit", async function(e){
+
+e.preventDefault();
+
+textoBtn.innerHTML="⏳ Enviando...";
+
+const data = new FormData(form);
+
+await fetch(form.action,{
+method:"POST",
+body:data,
+headers:{
+'Accept':'application/json'
+}
+});
+
+textoBtn.innerHTML="✅ Enviado";
+
+mensaje.classList.remove("hidden");
+
+form.reset();
+
+});
+
+</script>
 </body>
 </html>
